@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, share, shareReplay, tap } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -15,10 +15,10 @@ export class ProductDetailComponent {
   errorMessage: string | null = null;
 
   ngOnInit(): void {
+    console.log("ProductDetailComponent: ngOnInit");
     const id = this.route.snapshot.paramMap.get('id');
-    this.product = this.productsService.getProduct(id!!);
-    this.product.subscribe({
+    this.product = this.productsService.getProduct(id!!).pipe(shareReplay(1)).pipe(share()).pipe(tap({
       error: (err) => { this.errorMessage = err.message; throw err; }
-    });
+    }));
   }
 }

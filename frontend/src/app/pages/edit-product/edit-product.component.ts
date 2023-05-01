@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, share } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -17,7 +17,7 @@ export class EditProductComponent {
   id = this.route.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
-    this.product = this.productsService.getProduct(this.id!!);
+    this.product = this.productsService.getProduct(this.id!!).pipe(share());
   }
 
   onSubmit = (product: Product) => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, share, tap } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -15,9 +15,8 @@ export class HomeComponent {
   errorMessage: string | null = null;
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts();
-    this.products.subscribe({
+    this.products = this.productsService.getProducts().pipe(share()).pipe(tap({
       error: (err) => { this.errorMessage = err.message; throw err; }
-    });
+    }));
   }
 }
