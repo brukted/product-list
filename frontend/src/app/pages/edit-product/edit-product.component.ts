@@ -27,6 +27,7 @@ export class EditProductComponent {
       .subscribe({
         error: (err) => {
           this.isFormLoading = false; console.error(err);
+          throw err;
         },
         complete: () => { this.isFormLoading = false; this.router.navigate(['/']) }
       });

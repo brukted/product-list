@@ -16,7 +16,7 @@ export class SignupComponent {
     this.isLoading = true;
     this.authService.signUp(loginInfo)
       .subscribe({
-        error: () => { this.isLoading = false },
+        error: (err) => { this.isLoading = false; throw err; },
         complete: () => { this.isLoading = false; this.router.navigate(['/login']); }
       });
   }

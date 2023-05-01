@@ -18,7 +18,7 @@ export class ProductDetailComponent {
     const id = this.route.snapshot.paramMap.get('id');
     this.product = this.productsService.getProduct(id!!);
     this.product.subscribe({
-      error: (err) => { this.errorMessage = err.message; }
+      error: (err) => { this.errorMessage = err.message; throw err; }
     });
   }
 }

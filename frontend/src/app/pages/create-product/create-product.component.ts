@@ -18,7 +18,7 @@ export class CreateProductComponent {
     this.isLoading = true;
     this.productsService.createProduct(product)
       .subscribe({
-        error: () => { this.isLoading = false },
+        error: (err) => { this.isLoading = false; throw err; },
         complete: () => { this.isLoading = false; this.router.navigate(['/']) }
       });
   };

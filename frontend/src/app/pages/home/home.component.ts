@@ -17,7 +17,7 @@ export class HomeComponent {
   ngOnInit(): void {
     this.products = this.productsService.getProducts();
     this.products.subscribe({
-      error: (err) => { this.errorMessage = err.message; }
+      error: (err) => { this.errorMessage = err.message; throw err; }
     });
   }
 }

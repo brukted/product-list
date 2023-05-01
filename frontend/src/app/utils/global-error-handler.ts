@@ -17,6 +17,6 @@ export class GlobalErrorHandler implements ErrorHandler {
         }
 
         this.snackBar.open(message, 'X', { panelClass: ['error'] });
-        console.error(error);
+        // console.error("GEH", error);
     }
 }
