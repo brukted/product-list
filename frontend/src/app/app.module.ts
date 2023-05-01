@@ -77,7 +77,7 @@ import { GlobalErrorHandler } from './utils/global-error-handler';
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     {
-      provide: "BASE_API_URL", useValue: "http://localhost:3000/api/v1"
+      provide: "BASE_API_URL", useValue: "https://product-list-api-0k8p.onrender.com/api/v1"
     },
     {
       provide: HTTP_INTERCEPTORS,
