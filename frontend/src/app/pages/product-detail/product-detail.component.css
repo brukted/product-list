@@ -8,9 +8,9 @@
 
 .detail-card__img {
     flex: 1;
-    max-width: 100%;
+    max-width: 50%;
     aspect-ratio: 1/1;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 2em;
 }
 
@@ -19,7 +19,18 @@
     flex: 1;
     flex-direction: row;
     padding: 1em;
-    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .detail-card__img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .detail-card {
+        flex-direction: column;
+    }
 }
 
 .detail-card__content {
@@ -28,7 +39,6 @@
     flex-direction: column;
     height: 100%;
     padding-top: 2em;
-    min-width: 20rem;
 }
 
 .detail-card__specs {
