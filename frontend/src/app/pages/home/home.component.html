@@ -1,0 +1,11 @@
+<button mat-fab extended class="my-fab" routerLink="/create-product">
+    <mat-icon>add</mat-icon>
+    Add Product
+</button>
+
+<app-loading-progress *ngIf="!(products | async) && !errorMessage"></app-loading-progress>
+<app-error-display [message]="errorMessage" *ngIf="errorMessage"></app-error-display>
+
+<div class="products-grid" *ngIf="(products | async)">
+    <app-product-card *ngFor=" let product of products | async" [product]="product"></app-product-card>
+</div>

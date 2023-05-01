@@ -1,0 +1,15 @@
+<div *ngIf="active">
+    <button mat-icon-button color="accent" *ngFor="let index of indices" [id]="'star_'+index.toString()"
+        (click)="onClick(index)" [matTooltip]="index.toString()" matTooltipPosition="above">
+        <mat-icon>
+            {{getIconAtIndex(index)}}
+        </mat-icon>
+    </button>
+</div>
+
+<div *ngIf="!active" class="star-rating-stars-row">
+    <mat-icon *ngFor="let index of indices" [id]="'star_'+index.toString()" color="accent">
+        {{getIconAtIndex(index)}}
+    </mat-icon>
+    <span>{{rating| number : '1.0-1'}}</span>
+</div>

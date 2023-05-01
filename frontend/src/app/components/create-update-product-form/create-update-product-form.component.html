@@ -1,0 +1,106 @@
+<mat-card class="create-product-card">
+    <mat-card-header>
+        <mat-card-title>
+            <span *ngIf="!product">Add Product</span>
+            <span *ngIf="product">Edit Product</span>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form id="create-product-form" class="create-product-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Type here" formControlName="title">
+                <mat-error *ngIf="form.controls['title'].invalid">
+                    <span *ngIf="form.controls['title'].errors!!['required']">
+                        Please enter title
+                    </span>
+                    <span *ngIf="form.controls['title'].errors!!['minlength']">
+                        Minimum 10 characters required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" placeholder="0" formControlName="price">
+                <span matTextPrefix>$&nbsp;</span>
+                <mat-error *ngIf="form.controls['price'].invalid">
+                    <span *ngIf="form.controls['price'].errors!!['required']">
+                        Please enter price
+                    </span>
+                    <span *ngIf="form.controls['price'].errors!!['min']">
+                        Minimum price is 0
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Type here" formControlName="description"></textarea>
+                <mat-error *ngIf="form.controls['description'].invalid">
+                    <span *ngIf="form.controls['description'].errors!!['required']">
+                        Please enter description
+                    </span>
+                    <span *ngIf="form.controls['description'].errors!!['minlength']">
+                        Minimum 30 characters required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Brand</mat-label>
+                <input matInput placeholder="Type here" formControlName="brand">
+                <mat-error *ngIf="form.controls['brand'].invalid">
+                    <span *ngIf="form.controls['brand'].errors!!['required']">
+                        Please enter brand
+                    </span>
+                    <span *ngIf="form.controls['brand'].errors!!['minlength']">
+                        Minimum 3 characters required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Material</mat-label>
+                <input matInput placeholder="Type here" formControlName="material">
+                <mat-error *ngIf="form.controls['material'].invalid">
+                    <span *ngIf="form.controls['material'].errors!!['required']">
+                        Please enter material
+                    </span>
+                    <span *ngIf="form.controls['material'].errors!!['minlength']">
+                        Minimum 3 characters required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Color</mat-label>
+                <input matInput placeholder="Type here" formControlName="color">
+                <mat-error *ngIf="form.controls['color'].invalid">
+                    <span *ngIf="form.controls['color'].errors!!['required']">
+                        Please enter color
+                    </span>
+                    <span *ngIf="form.controls['color'].errors!!['minlength']">
+                        Minimum 3 characters required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Banner Image Url</mat-label>
+                <input matInput placeholder="Type here" formControlName="bannerImage">
+                <mat-error *ngIf=" form.controls['bannerImage'].invalid">
+                    <span *ngIf="form.controls['bannerImage'].errors!!['required']">
+                        Please enter banner image url
+                    </span>
+                    <span *ngIf="form.controls['bannerImage'].errors!!['pattern']">
+                        Please enter valid url
+                    </span>
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="create-product-actions">
+        <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
+        <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid" form="create-product-form"
+            *ngIf="!isLoading">
+            <span *ngIf="!product">Create</span>
+            <span *ngIf="product">Update</span>
+        </button>
+        <button mat-flat-button color="secondary" *ngIf="!isLoading">Cancel</button>
+    </mat-card-actions>
+</mat-card>

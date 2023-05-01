@@ -1,0 +1,40 @@
+.product-card-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding-top: 1em;
+}
+
+.product-card-spacer {
+    height: 0.5em;
+}
+
+.product-card-actions {
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card-actions-button {
+    width: 100%;
+}
+
+.product-card__current-price {
+    margin: 0em;
+}
+
+.product-card-actions-price-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}

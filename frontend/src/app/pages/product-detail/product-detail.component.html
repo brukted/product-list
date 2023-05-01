@@ -1,0 +1,41 @@
+<app-loading-progress *ngIf="!(product | async)  && !errorMessage"></app-loading-progress>
+
+<app-error-display [message]="errorMessage" *ngIf="errorMessage"></app-error-display>
+
+<mat-card class="detail-card" *ngIf="(product | async) !== null">
+    <img [src]="(product | async)?.bannerImage ?? ''" alt="Photo of a product" class="detail-card__img">
+    <mat-card-content class="detail-card__content">
+        <p class="mat-h1">
+            {{ (product | async)?.title ?? '' }}
+        </p>
+        <app-star-rating [rating]="(product | async)?.rating ?? 0"></app-star-rating>
+        <div class="detail-card__specs">
+            <span>
+                <span class="mat-h3">Color:</span> {{ (product | async)?.color ?? ''}}
+            </span>
+            <span>
+                <span class="mat-h3">Material:</span> {{ (product | async)?.material ?? ''}}
+            </span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="detail-card__price-section">
+            <span class="mat-h1">${{ ((product | async)?.price ?? 0) |
+                number:"1.0-2"}}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="detail-card__actions">
+            <button mat-flat-button color="primary" class="detail-card__button">Add to cart</button>
+            <button mat-flat-button color="secondary" class="detail-card__button"
+                [routerLink]="['/products/',  (product | async)?.id ?? '' , 'edit']">Edit</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+
+<div *ngIf="(product | async)">
+    <p class="mat-h2">
+        Description
+    </p>
+    <p class="mat-body">
+        {{ (product | async)?.description ?? ''}}
+    </p>
+</div>

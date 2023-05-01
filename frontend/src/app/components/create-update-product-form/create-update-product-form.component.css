@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.create-product-card {
+    width: 100%;
+    max-width: 50em;
+    padding: 2em;
+}
+
+.create-product-form {
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.create-product-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2em;
+    gap: 1em;
+}

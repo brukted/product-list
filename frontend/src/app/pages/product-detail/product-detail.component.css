@@ -1,0 +1,57 @@
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1em;
+    gap: 2em;
+}
+
+.detail-card__img {
+    flex: 1;
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 2em;
+}
+
+.detail-card {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    padding: 1em;
+    flex-wrap: wrap;
+}
+
+.detail-card__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 2em;
+    min-width: 20rem;
+}
+
+.detail-card__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.detail-card__price-section {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.detail-card__button {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.detail-card__actions {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    justify-content: end;
+}

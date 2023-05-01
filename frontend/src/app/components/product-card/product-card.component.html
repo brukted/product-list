@@ -1,0 +1,19 @@
+<mat-card class="product-card" [routerLink]="['/products', product.id]">
+    <img mat-card-image [src]="product.bannerImage" alt="Photo of a product" class="product-card-image">
+    <mat-divider></mat-divider>
+    <mat-card-content class="product-card-content">
+        <mat-card-subtitle>Best Seller</mat-card-subtitle>
+        <div class="product-card-spacer"></div>
+        <p>
+            {{ product.title }}
+        </p>
+        <app-star-rating [rating]="product.rating"></app-star-rating>
+    </mat-card-content>
+    <mat-card-actions class="product-card-actions">
+        <div class="product-card-actions-price-section">
+            <span class="mat-h2 product-card__current-price">${{product.price | number:"1.0-2"}}</span>
+            <span class="mat-body">You save $100</span>
+        </div>
+        <button mat-flat-button color="primary" class="product-card-actions-button">Add to cart</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,3 @@
+<app-create-update-product-form *ngIf="(product | async)" [product]="(product | async)!!" [isLoading]="isFormLoading"
+    (submitted)="onSubmit($event)"></app-create-update-product-form>
+<app-loading-progress *ngIf="!(product | async)"></app-loading-progress>

@@ -1,0 +1,15 @@
+<mat-toolbar>
+    <img class="example-fill-remaining-space" src="../../assets/images/logo.svg" alt="" routerLink="/">
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+        *ngIf="(authService.isAuthenticated$ | async)" [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
