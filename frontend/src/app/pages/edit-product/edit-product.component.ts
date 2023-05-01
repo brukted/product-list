@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 import { ProductsService } from 'src/app/services/products/products.service';
@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent {
-  constructor(private productsService: ProductsService, private route: ActivatedRoute) { }
+  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) { }
 
   product: Observable<Product> = new Observable<Product>();
   isFormLoading = false;
@@ -28,7 +28,7 @@ export class EditProductComponent {
         error: (err) => {
           this.isFormLoading = false; console.error(err);
         },
-        complete: () => { this.isFormLoading = false }
+        complete: () => { this.isFormLoading = false; this.router.navigate(['/']) }
       });
   }
 }

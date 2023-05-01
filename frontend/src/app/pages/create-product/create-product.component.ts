@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/Product.model';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -11,14 +12,14 @@ import { ProductsService } from 'src/app/services/products/products.service';
 export class CreateProductComponent {
   isLoading = false;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private router: Router) { }
 
   onSubmit = (product: Product) => {
     this.isLoading = true;
     this.productsService.createProduct(product)
       .subscribe({
         error: () => { this.isLoading = false },
-        complete: () => { this.isLoading = false }
+        complete: () => { this.isLoading = false; this.router.navigate(['/']) }
       });
   };
 }
